@@ -12,10 +12,15 @@
           <h1>Kom Grupp Projekt</h1>
       </header>
       <main>
-          <form>
+          <div class="main--makeList"><div>
+              <input id="green" class="main--radio" type="radio" name="color" checked> Green
+              <input id="blue" class="main--radio" type="radio" name="color"> Blue
+              <input id="red" class="main--radio" type="radio" name="color"> Red
+              <input id="yellow" class="main--radio" type="radio" name="color"> Yellow<br>
               <input type="text" placeholder="Listnamn" class="main--input"><br>
-              <button>Lägg till lista</button>
-          </form>
+              <button class="main--btn" onclick="makeList()">Lägg till lista</button>
+              </div>
+            </div>
       </main>
       <footer>
         <h4>Jonas - Jonas - Ibrahim</h4>
