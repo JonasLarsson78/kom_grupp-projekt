@@ -1,6 +1,11 @@
 *{
     margin: 0px;
 }
+.x{
+    position: fixed;
+    top:5px;
+    left: 5px;
+}
 body{
     background-color: #8a8a8a;
     font-family: 'Open Sans', sans-serif;
@@ -9,7 +14,7 @@ header{
     position: fixed;
     top: 0;
     width: 100%;
-    height: 60px;
+    height: 100px;
     background-color: #555555;
     text-align: center;
     padding-top: 20px;
@@ -35,14 +40,14 @@ footer{
 }
 .main--makeList{
     position: relative;
-    top: 100px;
-    margin-left: 10px;
+    top: 120px;
     display: inline-flex;
 }
 .main--list{
+    position: relative;
     width: 300px;
     height: 100px;
-    background-color: green;
+    background-color: lightgreen;
     margin: 10px;
     border-radius: 5px;
     box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.2);
@@ -50,9 +55,11 @@ footer{
 .main--radio{
     margin-top: 10px;
 }
-.main--p{
+.main--h4{
+    position: absolute;
+    top: 10px;
     padding-left: 10px;
-    padding-top: 5px;
+    visibility: visible;
 }
 .main--btn{
     height: 30px;
@@ -60,6 +67,37 @@ footer{
     border-radius: 5px;
     border: none;
     margin-left: 140px;
-    background-color: lightgreen;
+    background-color: lightsalmon;
     outline: none;
+}
+.list--del{
+position: absolute;
+top: 5px;
+right: 0px;
+border: none;
+background-color: transparent;
+outline: none;
+}
+.addList--Item{
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    text-decoration: none;
+    color: black;
+}
+.addList--Item:hover{
+    color: #555555;
+}
+.material-icons:hover{
+color: #555555;
+}
+.input--edit{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.save--btn{
+position: absolute;
+top:10px;
+left: 170px;
 }
