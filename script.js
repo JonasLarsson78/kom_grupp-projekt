@@ -3,6 +3,7 @@ let mainInput = document.querySelector(".main--input");
 let addBtn = document.querySelector(".main--btn");
 
 let color = "lightgreen";
+
 let radioColor = document.querySelectorAll(".main--radio");
 for (let radio of radioColor){
     radio.addEventListener("input", function(e){
