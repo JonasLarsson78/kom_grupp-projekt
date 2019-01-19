@@ -11,6 +11,7 @@ for (let radio of radioColor){
 });
 }
 function makeList(){
+    if (mainInput.value){
     let list = document.createElement("div");
         list.classList.add("main--list");
         list.style.backgroundColor = color;
@@ -20,12 +21,13 @@ function makeList(){
         myH4.textContent = mainInput.value;
     let editInput = document.createElement("input");
         editInput.setAttribute("type", "text");
+        editInput.setAttribute("maxlength", "15");
         editInput.classList.add("input--edit");
         editInput.value = myH4.textContent;
         editInput.style.visibility ="hidden";
     let okBtn = document.createElement("button");
         okBtn.classList.add("save--btn");
-        okBtn.textContent = "Save";
+        okBtn.textContent = "Spara";
         okBtn.style.visibility ="hidden";
     let delBtn = document.createElement("button");
         delBtn.classList.add("list--del");
@@ -58,6 +60,8 @@ function makeList(){
             input.style.visibility = "visible";
         });
     }
+    
+    
     let saveBtn = document.querySelectorAll(".save--btn");
     for (let btnS of saveBtn){
         btnS.addEventListener("click", function(e){
@@ -70,7 +74,12 @@ function makeList(){
             h4.style.visibility = "visible";
             h4.textContent = input.value;
         });
-    }   
+    }
+}
+else{
+    mainInput.classList.add("main--input__placeholder");
+    mainInput.placeholder = "Måste skriva Listnamn här...";
+}    
 }
 
 function deleteItem(current){
@@ -79,7 +88,7 @@ function deleteItem(current){
 let countListCard = 1;
 function makeCard(current){
     let x = document.createElement("div");
-    x.classList.add("test");
+    x.classList.add("list--card");
     x.id = "list" + countListCard;
     x.setAttribute("draggable", "true");
 current.parentNode.appendChild(x);
