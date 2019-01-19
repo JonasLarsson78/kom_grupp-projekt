@@ -10,12 +10,11 @@ for (let radio of radioColor){
     color = click.id;
 });
 }
-let count = 0;
-
 function makeList(){
     let list = document.createElement("div");
         list.classList.add("main--list");
         list.style.backgroundColor = color;
+        list.setAttribute("data-drop-target", "true");
     let myH4 = document.createElement("h4");
         myH4.classList.add("main--h4");
         myH4.textContent = mainInput.value;
@@ -37,6 +36,7 @@ function makeList(){
     let addListItem = document.createElement("a");
         addListItem.setAttribute("href", "#");
         addListItem.textContent = "+ Lägg till kort";
+        addListItem.setAttribute("onClick", "makeCard(this)");
         addListItem.classList.add("addList--Item");
         
         main.appendChild(list); 
@@ -46,14 +46,13 @@ function makeList(){
         list.appendChild(delBtn);
         list.appendChild(addListItem);
         delBtn.appendChild(delIcon);
-    count++;
+
     let editH4 = document.querySelectorAll(".main--h4");
     for (let allH4 of editH4){
         allH4.addEventListener("click", function(e){
             let clickH4 = e.target;
             let btn = e.toElement.previousSibling;
             let input = e.toElement.previousSibling.previousSibling;
-            
             clickH4.style.visibility = "hidden";
             btn.style.visibility = "visible";
             input.style.visibility = "visible";
@@ -70,13 +69,19 @@ function makeList(){
             input.style.visibility = "hidden";
             h4.style.visibility = "visible";
             h4.textContent = input.value;
-
         });
     }   
-    
-
 }
 
 function deleteItem(current){
     current.parentNode.remove();
+}
+let countListCard = 1;
+function makeCard(current){
+    let x = document.createElement("div");
+    x.classList.add("test");
+    x.id = "list" + countListCard;
+    x.setAttribute("draggable", "true");
+current.parentNode.appendChild(x);
+countListCard++;
 }
