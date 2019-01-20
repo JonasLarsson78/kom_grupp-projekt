@@ -19,6 +19,7 @@ function makeList(){
         list.setAttribute("data-drop-target", "true");
     let myH4 = document.createElement("h4");
         myH4.classList.add("main--h4");
+        myH4.setAttribute("title", "Ändra titel text");
         myH4.textContent = mainInput.value;
     let editInput = document.createElement("input");
         editInput.setAttribute("type", "text");
@@ -35,10 +36,15 @@ function makeList(){
         delBtn.setAttribute("onClick", "deleteItem(this)");
     let delIcon = document.createElement("i");
         delIcon.classList.add("material-icons");
-        delIcon.textContent = "highlight_off";
+        delIcon.setAttribute("title", "Stäng");
+        delIcon.textContent = "close";
+    let addIcon = document.createElement("i");
+        addIcon.classList.add("material-icons");
+        addIcon.textContent = "playlist_add";   
     let addListItem = document.createElement("a");
         addListItem.setAttribute("href", "#");
-        addListItem.textContent = "+ Lägg till kort";
+        addListItem.setAttribute("alt", "Lägg till kort");
+        addListItem.setAttribute("title", "Lägg till kort");
         addListItem.setAttribute("onClick", "makeCard(this)");
         addListItem.classList.add("addList--Item");
         
@@ -48,6 +54,7 @@ function makeList(){
         list.appendChild(myH4);
         list.appendChild(delBtn);
         list.appendChild(addListItem);
+        addListItem.appendChild(addIcon);
         delBtn.appendChild(delIcon);
 
     let editH4 = document.querySelectorAll(".main--h4");
@@ -92,6 +99,16 @@ function makeCard(current){
     x.classList.add("list--card");
     x.id = "list" + countListCard;
     x.setAttribute("draggable", "true");
+    let delBtn = document.createElement("button");
+        delBtn.classList.add("card--del");
+        delBtn.setAttribute("onClick", "deleteItem(this)");
+    let delIcon = document.createElement("i");
+        delIcon.classList.add("material-icons");
+        delIcon.setAttribute("title", "Stäng");
+        delIcon.textContent = "close";
+
 current.parentNode.appendChild(x);
+x.appendChild(delBtn);
+delBtn.appendChild(delIcon);
 countListCard++;
 }
