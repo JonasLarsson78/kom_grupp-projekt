@@ -45,7 +45,7 @@ function makeList(){
         addListItem.setAttribute("href", "#");
         addListItem.setAttribute("alt", "Lägg till kort");
         addListItem.setAttribute("title", "Lägg till kort");
-        addListItem.setAttribute("onClick", "makeCard(this)");
+        addListItem.setAttribute("onClick", "");/* lägg till funktion som kör "add card" */
         addListItem.classList.add("addList--Item");
         
         main.appendChild(list); 
@@ -93,7 +93,7 @@ else{
 function deleteItem(current){
     current.parentNode.remove();
 }
-let countListCard = 1;
+/* let countListCard = 1;
 function makeCard(current){
     let x = document.createElement("div");
     x.classList.add("list--card");
@@ -111,4 +111,4 @@ current.parentNode.appendChild(x);
 x.appendChild(delBtn);
 delBtn.appendChild(delIcon);
 countListCard++;
-}
+} */
