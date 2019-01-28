@@ -8,8 +8,6 @@ let activListItem = "";
 let span = document.getElementsByClassName("close")[0];
 let span1 = document.getElementsByClassName("edit-close")[0];
 
-
-
 let main = document.querySelector(".main--makeList");
 let mainInput = document.querySelector(".main--input");
 let addBtn = document.querySelector(".main--btn");
@@ -24,7 +22,6 @@ span.onclick = function () {
   span1.onclick = function () {
       closeModal();  
 }
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == createModal) {
@@ -119,16 +116,20 @@ function makeList(){
             let click = e.target;
             let h4 = e.toElement.nextSibling;
             let input = e.toElement.previousSibling;
-
-            click.style.visibility = "hidden";
+        
+        if (input.value === ""){
+            input.classList.add("main--input__placeholder");
+            input.placeholder = "Måste skriva Listnamn här.."
+        }
+        else{
+           click.style.visibility = "hidden";
             input.style.visibility = "hidden";
             h4.style.visibility = "visible";
-            h4.textContent = input.value;
+            h4.textContent = input.value; 
+        }
         });
         mainInput.classList.remove("main--input__placeholder");
         mainInput.placeholder = "Listnamn...";
-
-
     }
 }
 else{
@@ -157,13 +158,11 @@ function createKort(e) {
     let listTitleContent = document.querySelector(".createListTitle");
     listTitleContent.textContent = "I listan ➜ " + listTitle.textContent;
     clearModal(createModal);
-
-    
   }
 
 let countListCard = 1;
 function saveButton(e){  
-  let titleInput = document.getElementById('titleInput').value;
+  let titleInput = document.getElementById('titleInput');
   let descriptionInput = document.getElementById('descriptionInput').value;
 //   let taskList = document.querySelector("#" + activTask + "List");
   let commentUl = document.createElement("ul");
@@ -176,7 +175,13 @@ function saveButton(e){
   let descriptionSpan = document.createElement("span");
   let hiddenDiv = document.createElement("div");
   let mainList = document.querySelector("#" + activTask);
-
+if (titleInput.value === ""){
+    titleInput.classList.add("main--input__placeholder");
+    titleInput.placeholder = "Måste ge kortet ett namn..."
+}
+else{
+    titleInput.classList.remove("main--input__placeholder");
+    titleInput.placeholder = "Ge det här kortet ett namn ..."
   // DELETE BUTTON
   let delBtn = document.createElement("button");
   delBtn.classList.add("card--del");
@@ -188,7 +193,7 @@ function saveButton(e){
   delBtn.appendChild(delIcon);
   
   //
-  titleSpan.textContent = titleInput;
+  titleSpan.textContent = titleInput.value;
   descriptionSpan.textContent = descriptionInput;
   halfClickableElement.setAttribute("onclick", "editKort(this)");
 
@@ -212,8 +217,9 @@ function saveButton(e){
   mainList.appendChild(activListUl);
    closeModal();
   countListCard++;
+}
+  
 };
-
 
 function editKort(e) {
     activListItem = e;
@@ -226,15 +232,23 @@ function editKort(e) {
     let listTitle = activListItem.parentNode.parentNode.parentNode.querySelector(".main--h4");
     let listTitleContent = document.querySelector(".editListTitle");
     listTitleContent.textContent = "I listan ➜ " + listTitle.textContent;
-    
-  
   }
-  
-  
   function editKortModal() {
-    activListItem.querySelector(".titleKort").textContent = document.querySelector("#editTitleInput").value;
-    activListItem.querySelector(".descriptionKort").textContent = document.querySelector("#editDescriptionInput").value;
-    closeModal();
+    let editTitleInput = document.querySelector("#editTitleInput");
+    let editDescriptionInput = document.querySelector("#editDescriptionInput"); 
+    let titelValue = activListItem.querySelector(".titleKort");
+    let descriptionValue = activListItem.querySelector(".descriptionKort");
+    if (editTitleInput.value === ""){
+        editTitleInput.classList.add("main--input__placeholder");
+        editTitleInput.placeholder = "Måste ge kortet ett namn...";
+    }
+    else{
+        editTitleInput.classList.remove("main--input__placeholder");
+        titelValue.textContent = editTitleInput.value;
+        descriptionValue.textContent = editDescriptionInput.value;
+        closeModal();
+    }
+    
   }
 
   function deleteList(current){
@@ -257,5 +271,3 @@ function saveComment(e) {
     }
     
   }
-  
-  
