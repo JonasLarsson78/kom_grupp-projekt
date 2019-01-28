@@ -192,10 +192,11 @@ else{
   delIcon.textContent = "close";
   delBtn.appendChild(delIcon);
   
-  //
   titleSpan.textContent = titleInput.value;
   descriptionSpan.textContent = descriptionInput;
-  halfClickableElement.setAttribute("onclick", "editKort(this)");
+  //halfClickableElement.setAttribute("onclick", "editKort(this)");
+  titleSpan.setAttribute("onclick", "editKort(this)");
+
 
   li.id = "list" + countListCard;
   halfClickableElement.classList.add("list--card");
@@ -222,7 +223,8 @@ else{
 };
 
 function editKort(e) {
-    activListItem = e;
+    activListItem = e.parentNode;
+    console.log(activListItem);
     editModal.style.display = "block";
     activTask = activListItem.parentNode.id;
     let titleKort = activListItem.querySelector(".titleKort").textContent;
