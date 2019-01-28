@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="script.js" defer></script>
@@ -25,10 +27,91 @@
       <main>
           <div class="main--makeList">
               <!-- ----------- Skapar lista här---------------- -->
+              <div class="make--card">
+                  <!-- <ul id="task1List">
+  
+                  </ul> -->
+              </div>
+              
             </div>
       </main>
       <footer>
         <h3>Grupp-projekt - Kommunikation & Agila projektmetoder - Jonas L - Jonas Ö - Ibrahim</h3>
       </footer>
+       <!-- Create  Modal -->
+    <div id="createModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <div class="header-content">
+                    <i class="fas fa-align-center"></i>
+                    <input class="modalInput" id="titleInput" type="text" maxlength="18" placeholder="Ge det här kortet ett namn ...">
+                    
+                </div>
+
+                <span class="createListTitle">
+                  </span>
+                <!-- <i class="fas fa-eye"></i> -->
+            </div>
+            <div class="modal-description">
+                <div class="description-content">
+                    <i class="fas fa-asterisk"></i>
+                    <h2>Beskrivining</h2>
+                </div>
+                <textarea class="modalInput" name="" id="descriptionInput" cols="30" rows="10" placeholder="Lägg till en mer detaljerad beskrivining ..."></textarea>
+                <button onclick="saveButton(this)">Spara</button>
+            </div>
+            <!-- <div class="modal-comment">
+                <div class="comment-content">
+                    <i class="far fa-comments"></i>
+                    <h2>Lägg till kommentar</h2>
+                </div>
+
+                <textarea name="" id="" cols="30" rows="10" placeholder="Skriv en kommentar..."></textarea>
+                <button>Spara</button>
+            </div> -->
+        </div>
+
+    </div>
+<!-- Edit  Modal -->
+<div id="editModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="edit-close">&times;</span>
+        <div class="modal-header">
+            <div class="header-content">
+                <i class="fas fa-align-center"></i>
+                <input class="modalInput" id="editTitleInput" type="text">
+                
+              </div>
+              
+              <span class="editListTitle">
+                </span>
+
+        </div>
+        <div class="modal-description">
+            <div class="description-content">
+                <i class="fas fa-asterisk"></i>
+                <h2>Beskrivining</h2>
+            </div>
+            <textarea class="modalInput" name="" id="editDescriptionInput" cols="30" rows="10" placeholder="Lägg till en mer detaljerad beskrivining ..."></textarea>
+            <button onclick="editKortModal(this)">Spara</button>
+        </div>
+        <div class="modal-comment">
+            <div class="comment-content">
+                <i class="far fa-comments"></i>
+                <h2>Lägg till kommentar</h2>
+            </div>
+
+            <textarea name="" id="editCommentInput" cols="30" rows="10" placeholder="Skriv en kommentar..."></textarea>
+            <button onclick="saveComment(this)">Spara</button>
+            <ul class="commentContentUl">
+
+            </ul>
+        </div>
+    </div>
+
+</div>
   </body>
 </html>
