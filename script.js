@@ -195,7 +195,7 @@ else{
   titleSpan.textContent = titleInput.value;
   descriptionSpan.textContent = descriptionInput;
   //halfClickableElement.setAttribute("onclick", "editKort(this)");
-  titleSpan.setAttribute("onclick", "editKort(this)");
+  //titleSpan.setAttribute("onclick", "editKort(this)");
 
 
   li.id = "list" + countListCard;
@@ -204,12 +204,21 @@ else{
   halfClosableElement.classList.add("half-closable-element");
   descriptionSpan.classList.add("descriptionKort");
   commentUl.classList.add("commentList");
-  titleSpan.style.cursor = "pointer";
+  //titleSpan.setAttribute("title", "Redigera Kort")
+  //titleSpan.style.cursor = "pointer";
   hiddenDiv.style.display = "none";
+let editIcon = document.createElement("i");
+    editIcon.setAttribute("title", "Redigera Kort")
+    editIcon.setAttribute("onclick", "editKort(this)");
+    editIcon.classList.add("material-icons");
+    editIcon.classList.add("editIcon-pos");
+    editIcon.textContent = "edit";
+
 
   hiddenDiv.appendChild(commentUl);
   hiddenDiv.appendChild(descriptionSpan);
   halfClickableElement.appendChild(titleSpan);
+  halfClickableElement.appendChild(editIcon);
   halfClickableElement.appendChild(hiddenDiv);
   li.appendChild(halfClickableElement);
   li.appendChild(halfClosableElement);
