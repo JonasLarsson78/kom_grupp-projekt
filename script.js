@@ -167,7 +167,8 @@ function saveButton(e){
 //   let taskList = document.querySelector("#" + activTask + "List");
   let commentUl = document.createElement("ul");
   let activListUl = document.createElement("ul");
-  activListUl.setAttribute("id", activTask + "List");
+  activListUl.setAttribute("id", countListCard + "List");
+  activListUl.setAttribute("draggable", true);
   let li = document.createElement("li");
   let halfClickableElement = document.createElement("div");
   let halfClosableElement  = document.createElement("div");
