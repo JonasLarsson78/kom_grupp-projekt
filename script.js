@@ -107,6 +107,7 @@ function makeList(){
             input.style.visibility = "visible";
         });
         mainListId++;
+        drag ()     // kör function för att spara de divar som är droppable.
     }
     
     
@@ -136,7 +137,8 @@ else{
     mainInput.classList.add("main--input__placeholder");
     mainInput.placeholder = "Måste skriva Listnamn här...";
 } 
-mainInput.value = "";   
+mainInput.value = ""; 
+  
 
 }
 
@@ -228,6 +230,7 @@ let editIcon = document.createElement("i");
   mainList.appendChild(activListUl);
    closeModal();
   countListCard++;
+  drag ()  // kör function för att spara de ul-taggar som är draggable.
 }
   
 };
@@ -283,3 +286,53 @@ function saveComment(e) {
     }
     
   }
+
+  // Drag and Drop //
+function drag (){ 
+    let draggable = document.querySelectorAll('[draggable]')
+    let targets = document.querySelectorAll('[data-drop-target]');
+    let boleanString = true;
+    console.log (draggable);
+    for (var i = 0; i < draggable.length; i++) {
+        draggable[i].addEventListener("dragstart", dragStart);
+        draggable[i].addEventListener("dragend", dragEnd);
+    }
+    for (var i = 0; i < targets.length; i++) {
+        targets[i].addEventListener("dragover", dragOver);
+        targets[i].addEventListener("dragleave", dragLeave);
+        targets[i].addEventListener("drop", dragDrop);
+    }
+
+    function dragStart(e) {
+        // e.preventDefault();
+        e.dataTransfer.setData("text", this.id);
+
+    }
+    function dragEnd() {
+    }
+    
+    function dragOver(e) {
+        e.preventDefault();
+        this.style.paddingBottom = ("90px");
+    }
+
+    function dragLeave() {
+        // this.classList.remove("drag-drop-size");
+        this.style.paddingBottom = ("");
+    }
+
+    function dragDrop(e) {
+        e.preventDefault();
+        console.log ("tjena");
+        this.style.paddingBottom = ("");
+        // this.classList.remove("boxHover");
+        // if (e.type != "drop") {
+        //     return;
+        // }
+
+
+        let myItem = e.dataTransfer.getData("text");
+        let draggedEl = document.getElementById(myItem);
+        this.appendChild(draggedEl);
+    }
+}
