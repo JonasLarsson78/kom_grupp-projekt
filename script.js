@@ -108,7 +108,7 @@ function makeList(){
             input.style.visibility = "visible";
         });
         mainListId++;
-        drag ()     // kör function för att spara de divar som är droppable.
+        //drag ()     // kör function för att spara de divar som är droppable.
     }
     
     let saveBtn = document.querySelectorAll(".save--btn");
@@ -132,6 +132,7 @@ function makeList(){
         mainInput.classList.remove("main--input__placeholder");
         mainInput.placeholder = "Listnamn...";
     }
+    drag (); 
 }
 else{
     mainInput.classList.add("main--input__placeholder");
