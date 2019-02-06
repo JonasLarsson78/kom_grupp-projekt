@@ -44,9 +44,9 @@ function clearModal(modal) {
   }
 
 for (let radio of radioColor){
-    radio.addEventListener("input", function(e){
+        radio.addEventListener("input", function(e){
     let click = e.target;
-    color = click.id;
+        color = click.id;
 });
 }
 
@@ -103,9 +103,9 @@ function makeList(){
             let clickH4 = e.target;
             let btn = e.toElement.previousSibling;
             let input = e.toElement.previousSibling.previousSibling;
-            clickH4.style.visibility = "hidden";
-            btn.style.visibility = "visible";
-            input.style.visibility = "visible";
+                clickH4.style.visibility = "hidden";
+                btn.style.visibility = "visible";
+                input.style.visibility = "visible";
         });
         mainListId++;
     }
