@@ -13,6 +13,9 @@ let mainInput = document.querySelector(".main--input");
 let addBtn = document.querySelector(".main--btn");
 
 let color = "lightgreen";
+let mainListId = 1;
+let countListCard = 1;
+
 
 let radioColor = document.querySelectorAll(".main--radio");
 // When the user clicks on <span> (x), close the modal
@@ -47,7 +50,6 @@ for (let radio of radioColor){
 });
 }
 
-let mainListId = 1;
 function makeList(){
     if (mainInput.value){
     let list = document.createElement("div");
@@ -85,7 +87,6 @@ function makeList(){
         addListItem.classList.add("addList--Item");
         addListItem.setAttribute("onClick", "createKort(this)");
         list.id = "task" + mainListId;
-        
 
         main.appendChild(list); 
         list.appendChild(editInput);
@@ -108,7 +109,6 @@ function makeList(){
         });
         mainListId++;
     }
-    
     
     let saveBtn = document.querySelectorAll(".save--btn");
     for (let btnS of saveBtn){
@@ -136,8 +136,7 @@ else{
     mainInput.classList.add("main--input__placeholder");
     mainInput.placeholder = "Måste skriva Listnamn här...";
 } 
-mainInput.value = "";   
-
+    mainInput.value = "";   
 }
 
 function deleteItem(current){
@@ -149,7 +148,6 @@ function closeModal() {
     editModal.style.display = "none";
   }
 
-
 function createKort(e) {
     activListItem = e;
     createModal.style.display = "block";
@@ -160,11 +158,9 @@ function createKort(e) {
     clearModal(createModal);
   }
 
-let countListCard = 1;
 function saveButton(e){  
   let titleInput = document.getElementById('titleInput');
   let descriptionInput = document.getElementById('descriptionInput').value;
-//   let taskList = document.querySelector("#" + activTask + "List");
   let commentUl = document.createElement("ul");
   let activListUl = document.createElement("ul");
   activListUl.setAttribute("id", countListCard + "List");
@@ -195,9 +191,6 @@ else{
   
   titleSpan.textContent = titleInput.value;
   descriptionSpan.textContent = descriptionInput;
-  //halfClickableElement.setAttribute("onclick", "editKort(this)");
-  //titleSpan.setAttribute("onclick", "editKort(this)");
-
 
   li.id = "list" + countListCard;
   halfClickableElement.classList.add("list--card");
@@ -205,8 +198,6 @@ else{
   halfClosableElement.classList.add("half-closable-element");
   descriptionSpan.classList.add("descriptionKort");
   commentUl.classList.add("commentList");
-  //titleSpan.setAttribute("title", "Redigera Kort")
-  //titleSpan.style.cursor = "pointer";
   hiddenDiv.style.display = "none";
 let editIcon = document.createElement("i");
     editIcon.setAttribute("title", "Redigera Kort")
