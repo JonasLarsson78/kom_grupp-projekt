@@ -155,10 +155,10 @@ function createKort(e) {
     activListItem = e;
     createModal.style.display = "block";
     activTask = e.parentNode.id;
-    let listTitle = activListItem.parentNode.parentNode.parentNode.querySelector(".main--h4");
-    let listTitleContent = document.querySelector(".createListTitle");
+let listTitle = activListItem.parentNode.parentNode.parentNode.querySelector(".main--h4");
+let listTitleContent = document.querySelector(".createListTitle");
     listTitleContent.textContent = "I listan ➜ " + listTitle.textContent;
-    clearModal(createModal);
+clearModal(createModal);
   }
 
 function saveButton(e){  
