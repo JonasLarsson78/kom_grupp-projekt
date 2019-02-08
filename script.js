@@ -108,7 +108,9 @@ function makeList(){
             input.style.visibility = "visible";
         });
         mainListId++;
-        drag ()     // kör function för att spara de divar som är droppable.
+        // dragList ();
+        drag ();     // kör function för att spara de divar som är droppable.
+      
     }
     
     let saveBtn = document.querySelectorAll(".save--btn");
@@ -222,7 +224,9 @@ let editIcon = document.createElement("i");
   mainList.appendChild(activListUl);
    closeModal();
   countListCard++;
+//   dragList()
   drag ()  // kör function för att spara de ul-taggar som är draggable.
+
 }
   
 };
@@ -280,51 +284,106 @@ function saveComment(e) {
   }
 
   // Drag and Drop //
-function drag (){ 
+function drag() {
+
     let draggable = document.querySelectorAll('[draggable]')
     let targets = document.querySelectorAll('[data-drop-target]');
-    let boleanString = true;
-    console.log (draggable);
+
     for (var i = 0; i < draggable.length; i++) {
-        draggable[i].addEventListener("dragstart", dragStart);
-        draggable[i].addEventListener("dragend", dragEnd);
+        draggable[i].addEventListener("dragstart", dragStart );
+        draggable[i].addEventListener("dragend", dragEnd );
     }
     for (var i = 0; i < targets.length; i++) {
         targets[i].addEventListener("dragover", dragOver);
+        targets[i].addEventListener("dragenter", dragEnter);
         targets[i].addEventListener("dragleave", dragLeave);
         targets[i].addEventListener("drop", dragDrop);
     }
 
     function dragStart(e) {
-        // e.preventDefault();
         e.dataTransfer.setData("text", this.id);
+        setTimeout(() => (this.style.display = "none"), 0); 
+    }
 
-    }
     function dragEnd() {
+        this.style.display = ""
+        this.style.transform =  "";
     }
-    
+
     function dragOver(e) {
         e.preventDefault();
-        this.style.paddingBottom = ("90px");
+        this.style.paddingBottom = "137px"
+        this.style.opacity = ("0.7");
+        this.classList.add("drag-drop-transform");
+        
     }
-
+    function dragEnter(e) {
+        e.preventDefault();
+      
+    }
     function dragLeave() {
-        // this.classList.remove("drag-drop-size");
-        this.style.paddingBottom = ("");
+        this.style.opacity = ("");
+        this.style.paddingBottom = "";
+        this.classList.remove("drag-drop-transform");
     }
 
     function dragDrop(e) {
         e.preventDefault();
-        console.log ("tjena");
-        this.style.paddingBottom = ("");
-        // this.classList.remove("boxHover");
-        // if (e.type != "drop") {
-        //     return;
-        // }
-
-
+        this.classList.remove("drag-drop-transform");
+        this.style.opacity = ("");
+        this.style.paddingBottom = "";
         let myItem = e.dataTransfer.getData("text");
         let draggedEl = document.getElementById(myItem);
         this.appendChild(draggedEl);
     }
 }
+
+// function dragList (){
+//     function addEventsDragAndDrop(el) {
+//         el.addEventListener('dragstart', dragStart, false);
+//         el.addEventListener('dragover', draglistOver, false);
+//         el.addEventListener('drop', dragDroplist, false);
+//         el.addEventListener('dragend', dragEnd, false);
+//       }
+      
+//     let listItens = document.querySelectorAll('[draggable]');
+//         [].forEach.call(listItens, function(item) {
+//         addEventsDragAndDrop(item);
+// });
+
+
+//     function dragStart(e) {
+//         element = this;
+//         e.dataTransfer.effectAllowed = 'move';
+//         e.dataTransfer.setData('html', this.innerHTML)
+    
+//     }
+
+//     function dragEnd() {
+//         this.style.display = ""
+//     }   
+
+
+//     function draglistOver(e) {
+//         if(e.preventDefault){
+//             e.preventDefault();
+//         }
+//         e.dataTransfer.dropEffect = "move";
+//         return false
+//         }
+//     function dragDroplist(e) {
+//         if (e.stopPropagation){
+//             e.stopPropagation();
+//         }
+     
+//         if (element !== this) {
+//             element.innerHTML = this.innerHTML;
+//             this.innerHTML = e.dataTransfer.getData("html");
+        
+//         }
+//         return false
+//     }   
+//     function dragEnd() {
+//         this.style.display = ""
+//     }
+// }
