@@ -16,7 +16,7 @@
     color: pink;
 }
 .yellow{
-    color: lightyellow;
+    color: lightyellow; 
 }
 
 body{
@@ -49,7 +49,7 @@ h1{
     font-size: 63px;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-h3{
+footer>h3{
     color: white;
     margin-top: 40px;
 }
@@ -94,7 +94,11 @@ hr{
     margin-bottom: 110px;
     /* transition: all .2s ease-in-out; */
 }
-
+.main--list>ul {
+    width: 243px;
+    margin-left: 39px;
+    padding: 0px;
+}
 .main--radio{
     margin-top: 10px;
 }
@@ -206,6 +210,16 @@ cursor: pointer;
     top: -10px;
     left: -3px;
 }
+.editIcon-pos{
+    position: absolute;
+    top: 4px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------ */
+/*---------------------------- CREATE&EDIT MODAL----------------------------*/
+/* ------------------------------------------------------------------------ */
 
 .modal {
     display: none; /* Hidden by default */
@@ -227,9 +241,10 @@ cursor: pointer;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 700px;
+    width: 586px; 
     height: auto;
     border-radius: 10px;
+    margin-bottom: 102px;
   }
   .modalInput{
       border-radius: 5px;
@@ -270,26 +285,34 @@ cursor: pointer;
       margin-top: 10px;
       display: flex;
       flex-direction: column;
+      width: 131%;
   }
   .modal-content .modal-header .header-content{
     display: flex;
     flex-direction: row;
     color: #607D8B;
+    margin-bottom: 10px;
+}
+.modal-content .modal-header .header-content>h3{
+    padding-left: 10px;
+    line-height: 1;
 }
 .modal-content .modal-header>span{
     font-size: 12px;
     margin-left: 29px;
     color: gray;
 }
-.modal-content .modal-header .header-content>input{
+.modal-content .modal-header>input{
     font-size: 26px;
     font-weight: 500;
     width: 68%;
     border: none;
-    background-color: #4caf500f;
+    background-color: #00bcd400;
     padding: 7px;
-    margin-left: 13px;
+    margin-left: 25px;
     outline: none;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+    margin-bottom: 5px;
 }
   .modal-content .modal-description .description-content{
       display: flex;
@@ -304,39 +327,55 @@ cursor: pointer;
     font-size: 13px;
     height: 100px;
     border: none;
-    background-color: #4caf500f;
+    background-color: #00bcd400;
     outline: none;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
 
   }
   .modal-content .modal-description>button{
     margin: 10px 25px;
-    background-color: green; 
-    color: white; 
-    border-radius: 5px;
-    padding: 16px 32px;
+    background-color: lightgray;
+    color: black;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 12px;
     transition-duration: 0.4s;
-    width: 20%;
-    cursor: pointer;
+    height: 30px;
+    width: 110px;
+    border-radius: 5px;
     border: none;
+    outline: none;
+    cursor: pointer;
   }
   .modal-content .modal-description>button:hover{
-    background-color: rgb(38, 177, 38);
+    background-color: lightgray;
+    opacity:0.6;
   }
   .modal-content .modal-description .description-content>i{
     line-height: 2;
     font-size: 18px;
   }
-  .modal-content .modal-description .description-content>h2{
-    padding-left: 10px
+  .modal-content .modal-description .description-content>h3{
+    padding-left: 10px;
+    line-height: 2;
   }
 
   .modal-content .modal-comment .comment-content{
     display: flex;
     flex-direction: row;
+    color: #607D8B;
+}
+/* ------------------------------------------------------------------ */
+/*---------------------------- KOMMENTAR ----------------------------*/
+/* ------------------------------------------------------------------ */
+.modal-content .modal-comment>h3{
+    padding: 23px;
+    color: #607D8B;
+}
+.modal-content .modal-comment .icon--comment{
+    position: relative;
+    top: 43px;
     color: #607D8B;
 }
 .modal-content .modal-comment>textarea{
@@ -346,33 +385,140 @@ cursor: pointer;
     font-size: 13px;
     height: 37px;
     border: none;
-    background-color: #4caf500f;
+    background-color: #00bcd400;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
 }
 .modal-content .modal-comment>button{
     margin: 10px 25px;
-    background-color: green; 
-    color: white; 
-    border-radius: 5px;
-    padding: 16px 32px;
+    background-color: lightgray;
+    color: black;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 12px;
     transition-duration: 0.4s;
-    width: 20%;
-    cursor: pointer;
+    height: 30px;
+    width: 110px;
+    border-radius: 5px;
     border: none;
+    outline: none;
+    cursor: pointer;
 }
 .modal-content .modal-comment>button:hover{
-    background-color: rgb(38, 177, 38);
+    background-color:lightgray;
+    opacity: 0.7;
   }
 .modal-content .modal-comment .comment-content>i{
     line-height: 2;
     font-size: 18px;
 }
-.modal-content .modal-comment .comment-content>h2{
-    padding-left: 10px
+.modal-content .modal-comment .comment-content>h3{
+    padding-left: 10px;
+    line-height: 2;
 }
+#editCommentInput{
+    outline: none;
+}
+.commentList li {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.commentList li .commentInputSpan{
+    background-color: #00bcd400;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+    height: auto;
+    width: 73%;
+    margin-left: -12px;
+    border-radius: 22px;
+    padding: 13px;
+    margin-top: 4px;
+    text-align: justify;
+}
+.commentList li  .commentDateSpan{
+    color: #6b808c;
+    font-size: 11px;
+}
+.commentList li::before {
+    border-bottom: 1px solid #e2d7d7;
+    bottom: 0;
+    content: "";
+    display: block;
+    width: 75%;
+    margin: 20px 0px;
+    margin-left: -9px;
+  }
+  .commentList li .commentDescriptionSpan{
+    margin-left: -16px;
+  }
+  .commentList li .comment--del{
+    width: 83px;
+    padding: 7px;
+    margin-top: 10px;
+    background-color: #ffdead00;
+    cursor: pointer;
+    border: none;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    color: #6b808c;
+  }
+  .commentList li .comment--del:hover{
+    color: #1e2529;
+  }
+  .commentList li .edit--comment{
+    width: 83px;
+    padding: 7px;
+    margin-top: 10px;
+    background-color: #ffdead00;
+    cursor: pointer;
+    border: none;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    color: #6b808c;
+    margin-left: 5px;
+  }
+  .commentList li .edit--comment:hover{
+    color: #1e2529;
+  }
+  .commentList li .input--comment-edit{
+    width: 71%;
+    margin-left: -8px;
+    padding: 11px;
+    font-size: 13px;
+    height: 37px;
+    border: none;
+    background-color: #00bcd400;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+    margin-top: -69px;
+  }
+  .commentList li .save--edit--btn {
+    position: relative;
+    top: 37px;
+    padding: 6px 1px;
+    background-color: lightgray;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    transition-duration: 0.4s;
+    height: 27px;
+    width: 53px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.commentList li .save--edit--btn:hover{
+    opacity: 0.7;
+}
+.list--card .listCommentIcon{
+    position: relative;
+    left: -25px;
+    top: 27px;
+}
+
+
 li{
     list-style: none;
 }
@@ -383,11 +529,7 @@ li{
 .drag-drop--invisible{
     display: none;
 }
-ul {
-    width: 243px;
-    margin-left: 39px;
-    padding: 0px;
-}
+
 
 /* Drag and drop effect */
 
@@ -416,3 +558,14 @@ ul {
       transform: translate3d(4px, 0, 0);
     }
   }
+/* 
+  @media screen and  (max-width:854px){
+    header {
+        display: flex;
+        flex-direction: column;
+        height: 200px;
+      }
+      .container{
+          position: initial;
+      }
+  } */
