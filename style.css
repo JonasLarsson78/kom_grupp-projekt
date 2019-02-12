@@ -114,7 +114,7 @@ hr{
     width: 110px;
     border-radius: 5px;
     border: none;
-    margin-left: 115px;
+    /* margin-left: 115px; */
     background-color: lightgray;
     outline: none;
     cursor: pointer;

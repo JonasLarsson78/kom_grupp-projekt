@@ -44,12 +44,17 @@ function clearModal(modal) {
   }
 
 for (let radio of radioColor){
-    radio.addEventListener("input", function(e){
+        radio.addEventListener("input", function(e){
     let click = e.target;
-    color = click.id;
+        color = click.id;
 });
 }
-
+let delebutton = document.querySelector(".clear");
+delebutton.addEventListener("click",function(){
+    while (main.firstChild) {
+        main.removeChild(main.firstChild);
+    }
+})
 function makeList(){
     if (mainInput.value){
     let list = document.createElement("div");
@@ -103,14 +108,15 @@ function makeList(){
             let clickH4 = e.target;
             let btn = e.toElement.previousSibling;
             let input = e.toElement.previousSibling.previousSibling;
-            clickH4.style.visibility = "hidden";
-            btn.style.visibility = "visible";
-            input.style.visibility = "visible";
+                clickH4.style.visibility = "hidden";
+                btn.style.visibility = "visible";
+                input.style.visibility = "visible";
         });
         mainListId++;
         // dragList ();
         drag ();     // kör function för att spara de divar som är droppable.
       
+
     }
     
     let saveBtn = document.querySelectorAll(".save--btn");
@@ -134,6 +140,7 @@ function makeList(){
         mainInput.classList.remove("main--input__placeholder");
         mainInput.placeholder = "Listnamn...";
     }
+    drag (); // kör function för att spara de divar som är droppable.
 }
 else{
     mainInput.classList.add("main--input__placeholder");
@@ -157,10 +164,10 @@ function createKort(e) {
     activListItem = e;
     createModal.style.display = "block";
     activTask = e.parentNode.id;
-    let listTitle = activListItem.parentNode.parentNode.parentNode.querySelector(".main--h4");
-    let listTitleContent = document.querySelector(".createListTitle");
+let listTitle = activListItem.parentNode.parentNode.parentNode.querySelector(".main--h4");
+let listTitleContent = document.querySelector(".createListTitle");
     listTitleContent.textContent = "I listan ➜ " + listTitle.textContent;
-    clearModal(createModal);
+clearModal(createModal);
   }
 
 function saveButton(e){  
@@ -168,8 +175,8 @@ function saveButton(e){
   let descriptionInput = document.getElementById('descriptionInput').value;
   let commentUl = document.createElement("ul");
   let activListUl = document.createElement("ul");
-  activListUl.setAttribute("id", countListCard + "List");
-  activListUl.setAttribute("draggable", true);
+        activListUl.setAttribute("id", countListCard + "List");
+        activListUl.setAttribute("draggable", true);
   let li = document.createElement("li");
   let halfClickableElement = document.createElement("div");
   let halfClosableElement  = document.createElement("div");
@@ -177,40 +184,40 @@ function saveButton(e){
   let descriptionSpan = document.createElement("span");
   let hiddenDiv = document.createElement("div");
   let mainList = document.querySelector("#" + activTask);
-if (titleInput.value === ""){
-    titleInput.classList.add("main--input__placeholder");
-    titleInput.placeholder = "Måste ge kortet ett namn..."
+
+  if (titleInput.value === ""){
+        titleInput.classList.add("main--input__placeholder");
+        titleInput.placeholder = "Måste ge kortet ett namn..."
 }
-else{
-    titleInput.classList.remove("main--input__placeholder");
-    titleInput.placeholder = "Ge det här kortet ett namn ..."
+  else{
+        titleInput.classList.remove("main--input__placeholder");
+        titleInput.placeholder = "Ge det här kortet ett namn ..."
   // DELETE BUTTON
   let delBtn = document.createElement("button");
-  delBtn.classList.add("card--del");
-  delBtn.setAttribute("onClick", "deleteList(this)");
+        delBtn.classList.add("card--del");
+        delBtn.setAttribute("onClick", "deleteList(this)");
   let delIcon = document.createElement("i");
-  delIcon.classList.add("material-icons");
-  delIcon.setAttribute("title", "Stäng");
-  delIcon.textContent = "close";
-  delBtn.appendChild(delIcon);
+        delIcon.classList.add("material-icons");
+        delIcon.setAttribute("title", "Stäng");
+        delIcon.textContent = "close";
+        delBtn.appendChild(delIcon);
   
-  titleSpan.textContent = titleInput.value;
-  descriptionSpan.textContent = descriptionInput;
+        titleSpan.textContent = titleInput.value;
+        descriptionSpan.textContent = descriptionInput;
 
-  li.id = "list" + countListCard;
-  halfClickableElement.classList.add("list--card");
-  titleSpan.classList.add("titleKort");
-  halfClosableElement.classList.add("half-closable-element");
-  descriptionSpan.classList.add("descriptionKort");
-  commentUl.classList.add("commentList");
-  hiddenDiv.style.display = "none";
-let editIcon = document.createElement("i");
-    editIcon.setAttribute("title", "Redigera Kort")
-    editIcon.setAttribute("onclick", "editKort(this)");
-    editIcon.classList.add("material-icons");
-    editIcon.classList.add("editIcon-pos");
-    editIcon.textContent = "edit";
-
+        li.id = "list" + countListCard;
+        halfClickableElement.classList.add("list--card");
+        titleSpan.classList.add("titleKort");
+        halfClosableElement.classList.add("half-closable-element");
+        descriptionSpan.classList.add("descriptionKort");
+        commentUl.classList.add("commentList");
+        hiddenDiv.style.display = "none";
+  let editIcon = document.createElement("i");
+        editIcon.setAttribute("title", "Redigera Kort")
+        editIcon.setAttribute("onclick", "editKort(this)");
+        editIcon.classList.add("material-icons");
+        editIcon.classList.add("editIcon-pos");
+        editIcon.textContent = "edit";
 
   hiddenDiv.appendChild(commentUl);
   hiddenDiv.appendChild(descriptionSpan);
@@ -227,24 +234,26 @@ let editIcon = document.createElement("i");
 //   dragList()
   drag ()  // kör function för att spara de ul-taggar som är draggable.
 
+
 }
   
 };
 
 function editKort(e) {
-    activListItem = e.parentNode;
-    console.log(activListItem);
-    editModal.style.display = "block";
-    activTask = activListItem.parentNode.id;
+        activListItem = e.parentNode;
+        console.log(activListItem);
+        editModal.style.display = "block";
+        activTask = activListItem.parentNode.id;
     let titleKort = activListItem.querySelector(".titleKort").textContent;
     let descriptionKort = activListItem.querySelector(".descriptionKort").textContent;
-    document.querySelector("#editTitleInput").value = titleKort;
-    document.querySelector("#editDescriptionInput").value = descriptionKort;
+        document.querySelector("#editTitleInput").value = titleKort;
+        document.querySelector("#editDescriptionInput").value = descriptionKort;
     let listTitle = activListItem.parentNode.parentNode.parentNode.querySelector(".main--h4");
     let listTitleContent = document.querySelector(".editListTitle");
-    listTitleContent.textContent = "I listan ➜ " + listTitle.textContent;
-  }
-  function editKortModal() {
+        listTitleContent.textContent = "I listan ➜ " + listTitle.textContent;
+}
+
+function editKortModal() {
     let editTitleInput = document.querySelector("#editTitleInput");
     let editDescriptionInput = document.querySelector("#editDescriptionInput"); 
     let titelValue = activListItem.querySelector(".titleKort");
@@ -262,7 +271,7 @@ function editKort(e) {
     
   }
 
-  function deleteList(current){
+function deleteList(current){
     current.parentNode.parentNode.remove();
 }
 
@@ -271,16 +280,15 @@ function saveComment(e) {
     let commentList = document.querySelector(".commentList");
     let li = document.createElement("li");
     let commentInput = document.getElementById('editCommentInput').value;
-    li.textContent = commentInput;
-    commentList.appendChild(li);
+        li.textContent = commentInput;
+        commentList.appendChild(li);
     let activUl = activListItem.querySelector(".commentList > li");
     let commentContent = document.querySelector(".commentContentUl");
-    myArr.appendchild(activUl);
+        myArr.appendchild(activUl);
     for (let i = 0; i < activUl.length; i++) {
-        const element = activUl[i];
+    const element = activUl[i];
         commentContent.appendchild(element);
     }
-    
   }
 
   // Drag and Drop //
@@ -303,6 +311,7 @@ function drag() {
     function dragStart(e) {
         e.dataTransfer.setData("text", this.id);
         setTimeout(() => (this.style.display = "none"), 0); 
+        this.style.backgroundColor ="white";
     }
 
     function dragEnd() {
